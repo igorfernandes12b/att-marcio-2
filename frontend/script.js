@@ -1,4 +1,4 @@
-const API_URL = "https://att-marcio.vercel.app"
+const API_URL = "https://att-marcio-2-back.vercel.app"
 
 async function buscarFilmes() {
     const secaoFilmes = document.querySelector("#filmes")
