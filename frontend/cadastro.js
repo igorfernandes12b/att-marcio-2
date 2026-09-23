@@ -1,4 +1,4 @@
-const API_URL = "https://att-marcio-2.vercel.app/"
+const API_URL = "https://att-marcio.vercel.app"
 
 const form = document.querySelector("#form-cadastro")
 const feedback = document.querySelector("#feedback")
