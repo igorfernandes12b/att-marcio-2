@@ -1,0 +1,378 @@
+/*
+  THESIS: ficha de filme como matéria de revista de arquivo, não card de app de streaming.
+  OWN-WORLD: papel claro + serifada Fraunces em display + hairlines finas + acento único vermelho-tinta.
+  Ver DESIGN.md para o sistema completo de tokens.
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380..900;1,9..144,380..900&family=Inter:wght@400;500;600&display=swap");
+
+:root {
+    --color-paper: #f6f1e8;
+    --color-paper-card: #efe8da;
+    --color-ink: #1c1a17;
+    --color-ink-soft: #5c574c;
+    --color-hairline: #d8d0c0;
+    --color-accent: #b3271e;
+    --color-accent-deep: #8f1f18;
+
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "Inter", system-ui, sans-serif;
+
+    --radius: 3px;
+    --max-width: 1100px;
+    --max-width-form: 560px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    background: var(--color-paper);
+    color: var(--color-ink);
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+}
+
+/* ---------- Cabeçalho / navegação ---------- */
+
+.topbar {
+    border-bottom: 1px solid var(--color-hairline);
+    background: var(--color-paper);
+}
+
+.topbar__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 20px 24px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.topbar__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.topbar__nav {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.topbar__nav a {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+}
+
+.topbar__nav a:hover,
+.topbar__nav a[aria-current="page"] {
+    border-bottom-color: var(--color-accent);
+}
+
+/* ---------- Layout geral ---------- */
+
+main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+.page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    margin: 0;
+}
+
+.page-header p {
+    color: var(--color-ink-soft);
+    margin: 8px 0 0;
+    max-width: 60ch;
+}
+
+/* ---------- Botões ---------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: var(--radius);
+    padding: 12px 28px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.btn--primary {
+    background: var(--color-accent);
+    color: var(--color-paper);
+    border-color: var(--color-accent);
+}
+
+.btn--primary:hover {
+    background: var(--color-accent-deep);
+    border-color: var(--color-accent-deep);
+}
+
+.btn--ghost {
+    background: transparent;
+    color: var(--color-ink);
+    border-color: var(--color-hairline);
+}
+
+.btn--ghost:hover {
+    border-color: var(--color-ink);
+}
+
+.btn--danger {
+    background: transparent;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.btn--danger:hover {
+    background: var(--color-accent);
+    color: var(--color-paper);
+}
+
+.btn--small {
+    padding: 8px 16px;
+    font-size: 0.7rem;
+}
+
+/* ---------- Grid de filmes ---------- */
+
+.filmes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 32px;
+}
+
+.ficha {
+    background: var(--color-paper-card);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ficha__titulo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.ficha__meta {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.ficha__meta li {
+    font-size: 0.875rem;
+    color: var(--color-ink-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.ficha__meta-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+}
+
+.ficha__badge {
+    align-self: flex-start;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 3px 10px;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    border-radius: var(--radius);
+}
+
+.ficha__badge--neutro {
+    border-color: var(--color-hairline);
+    color: var(--color-ink-soft);
+}
+
+.ficha__acoes {
+    display: flex;
+    gap: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-hairline);
+}
+
+.ficha__acoes form {
+    margin: 0;
+}
+
+/* ---------- Estado vazio / erro ---------- */
+
+.estado {
+    border: 1px dashed var(--color-hairline);
+    border-radius: var(--radius);
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--color-ink-soft);
+}
+
+.estado strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--color-ink);
+    margin-bottom: 8px;
+}
+
+/* ---------- Formulários ---------- */
+
+.form-card {
+    max-width: var(--max-width-form);
+    margin: 0 auto;
+}
+
+.campo {
+    margin-bottom: 24px;
+}
+
+.campo label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-ink);
+    background: var(--color-paper-card);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    transition: border-color 0.15s ease;
+}
+
+.campo input:focus,
+.campo select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.campo small {
+    display: block;
+    margin-top: 6px;
+    color: var(--color-ink-soft);
+    font-size: 0.8rem;
+}
+
+.form-acoes {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.feedback {
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    font-size: 0.875rem;
+    margin-bottom: 24px;
+    border: 1px solid transparent;
+    display: none;
+}
+
+.feedback--erro {
+    display: block;
+    border-color: var(--color-accent);
+    color: var(--color-accent-deep);
+    background: color-mix(in srgb, var(--color-accent) 8%, var(--color-paper-card));
+}
+
+.feedback--sucesso {
+    display: block;
+    border-color: var(--color-hairline);
+    color: var(--color-ink);
+    background: var(--color-paper-card);
+}
+
+@media (max-width: 640px) {
+    .topbar__inner,
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-acoes {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .form-acoes .btn {
+        width: auto;
+    }
+}

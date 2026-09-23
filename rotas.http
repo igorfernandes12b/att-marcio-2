@@ -1,0 +1,34 @@
+GET  http://localhost:3067/
+
+###
+
+GET http://localhost:3067/movie/8
+
+###
+
+POST  http://localhost:3067/create-movie
+Content-Type: application/json
+
+{
+    "nome": "a adm é top",
+    "genero": "Comédia",
+    "duracao": 100,
+    "classificacao": 18
+}
+
+###
+
+DELETE http://localhost:3067/delete-movie/3
+
+###
+
+PUT http://localhost:3067/update-movie/8
+Content-Type: application/json
+
+{
+    "nome": "a adm é top",
+    "genero": "xing ling",
+    "duracao": 40,
+    "classificacao": 18
+}
+

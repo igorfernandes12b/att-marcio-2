@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Lista de Filmes</title>
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar__inner">
+            <p class="topbar__title">Lista de Filmes</p>
+            <nav>
+                <ul class="topbar__nav">
+                    <li><a href="index.html" aria-current="page">Acervo</a></li>
+                    <li><a href="cadastro.html">Cadastrar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <div>
+                <h1>Acervo</h1>
+                <p>Fichas técnicas dos filmes cadastrados no catálogo.</p>
+            </div>
+            <a class="btn btn--primary" href="cadastro.html">+ Cadastrar filme</a>
+        </div>
+
+        <section class="filmes" id="filmes"></section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
